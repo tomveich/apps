@@ -5,6 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feedback - Flag Creator</title>
     <meta http-equiv="refresh" content="0; url=https://docs.google.com/forms/d/e/1FAIpQLSd7waqCpb43n2i5Fad27eAZpXkxLJMyQ5uOp5gW_pN2D_80hg/viewform">
+    <style>
+
+    :root {
+        --positive: #fff;
+        --negative: #212121;
+    }
+
+    @media screen and (prefers-color-scheme: dark) {
+        :root {
+            --positive: #000;
+            --negative: #dfdfdf;
+        }
+    }
+
+    html {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        font-size: 62.5%;
+
+    }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        background-color: var(--positive);
+        color: var(--negative);
+
+        position: relative;
+        height: 100%;
+        width: 100%;
+        margin: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        font-size: 2rem;
+    }
+
+    </style>
 </head>
 <body>
     <p>Redirecting...</p>
