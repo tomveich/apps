@@ -1,6 +1,6 @@
 # Privacy policy
 
-This Privacy Policy ("Policy") describes the data practices of the Fidget App ("App," "We," "Us," or "Our").
+This Privacy Policy ("Policy") describes the data practices of the Physlink App ("App," "We," "Us," or "Our").
 
 Fidget is completely ad-free and respects your privacy.
 
