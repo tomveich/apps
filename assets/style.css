@@ -98,6 +98,11 @@ h3 {
 }
 
 
+main {
+    display: flex;
+    flex-direction: column;
+}
+
 
 footer {
     width: 100%;
@@ -118,10 +123,13 @@ footer {
     gap: 4rem;
     padding: 5rem;
     align-items: center;
-    max-height: 80vh;
-    padding-bottom: 35rem;
+    box-sizing: content-box;
 
     overflow: hidden;
+
+    & > * {
+        box-sizing: border-box;
+    }
 
     & > div {
         max-height: 100%;
@@ -134,5 +142,14 @@ footer {
         height: 100%;
         object-fit: cover;
         border-radius: 4rem;
+        max-height: 70vh;
+    }
+}
+
+
+@media only screen and (max-width: 600px) {
+    .bi {
+        grid-template-columns: 1ft;
+        grid-template-rows: 1fr 1fr;
     }
 }
