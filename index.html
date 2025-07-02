@@ -8,6 +8,29 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/style.css">
+    <script type="text/javascript">
+        /* Anti-spam E-Mail encryptor: https://jumk.de/nospam/stopspam.html */ 
+        function UnCryptMailto( s )
+        {
+            var n = 0;
+            var r = "";
+            for( var i = 0; i < s.length; i++)
+            {
+                n = s.charCodeAt( i );
+                if( n >= 8364 )
+                {
+                    n = 128;
+                }
+                r += String.fromCharCode( n - 1 );
+            }
+            return r;
+        }
+        
+        function linkTo_UnCryptMailto( s )
+        {
+            location.href=UnCryptMailto( s );
+        }
+        </script>
 </head>
 <body>
     <header>
@@ -25,31 +48,49 @@
                 </p>
             </div>
             <div>
-                <img src="/assets/u4.jpg" alt="">
+                <img src="/assets/u5.jpg" alt="">
             </div>
         </section>
 
         <section class="bi">
             <div>
-                <img src="/assets/u5.jpg" alt="">
+                <img src="/assets/u4.jpg" alt="">
             </div>
             <div>
                 <h2>Always improving</h2>
                 <p>
-                    We believe all apps should 
+                    We believe <i>excellence</i> is a moving target. Every release is a foundation for the next. Through constant iteration, user feedback, and curiosity, we refine every detail. From performance to design, we <i>never</i> stop evolving.
                 </p>
             </div>
 
         </section>
 
+        <section class="bi">
+            <div>
+                <h2>Built with purpose</h2>
+                <p>
+                    Every feature we design solves a real problem. Behind each pixel and interaction lies <i>intention</i>. We craft with clarity, ensuring that our apps not only look great—but feel <i>meaningful</i> and <i>intuitive</i> to use.
+            </div>
+            <div>
+                <img src="/assets/u7.jpg" alt="">
+            </div>
+        </section>
+
+        <section class="center">
+            <h2>It starts with a message</h2>
+            <a href="javascript:linkTo_UnCryptMailto('nbjmup;bqqtApmj/dy');" class="button">Get in touch</a>
+        </section>
+
     </main>
     <footer>
         <div class="column">
-            <h3>Get in touch</h3>
-            <p>apps at oli.cx</p>
+            <h3>oli.cx</h3>
+            <p>Creating unique digital experiences</p>
+    
+            <p>apps [at] oli.cx</p>
             <p></p>
         </div>
-        <div>&copy; oli.cx; 2021-2024</div>
+        <div>&copy; oli.cx; 2021-2025</div>
     </footer>
 </body>
 </html>
