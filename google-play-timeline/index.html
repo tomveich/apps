@@ -7,382 +7,488 @@
     <title>An Unresolved Google Play Support Case: A Developer's Timeline</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,400;0,500;0,700&display=swap" rel="stylesheet">
     <style>
+        /*
+        ========================================
+        MATERIAL DESIGN 3 - THEME & VARIABLES
+        ========================================
+        */
+        :root {
+            /* Color Palette */
+            --md-sys-color-primary: #6750a4;
+            --md-sys-color-on-primary: #ffffff;
+            --md-sys-color-surface: #fef7ff;
+            --md-sys-color-surface-container-low: #f7f2fa;
+            --md-sys-color-on-surface: #1d1b20;
+            --md-sys-color-on-surface-variant: #49454f;
+            --md-sys-color-outline: #79747e;
+            --md-sys-color-outline-variant: #cac4d0;
+            --md-sys-color-error: #b3261e;
+            --md-sys-color-on-error: #ffffff;
+            --md-sys-color-tertiary-container: #e8def8;
+            --md-sys-color-on-tertiary-container: #1d192b;
+            --md-sys-color-secondary-container: #e6e0e9;
+            --md-sys-color-on-secondary-container: #4a4458;
+            --md-sys-color-primary-container: #eaddff;
+            --md-sys-color-on-primary-container: #21005d;
+
+            /* Typography */
+            --md-sys-font-family-body: "Roboto", sans-serif;
+            --md-sys-font-family-brand: "Playfair Display", serif;
+            --md-ref-typeface-brand: "Playfair Display";
+
+            /* Spacing */
+            --spacing-xs: 0.25rem; /* 4px */
+            --spacing-s: 0.5rem;   /* 8px */
+            --spacing-m: 1rem;     /* 16px */
+            --spacing-l: 1.5rem;   /* 24px */
+            --spacing-xl: 2rem;    /* 32px */
+            --spacing-xxl: 4rem;   /* 64px */
+
+            /* Other */
+            --border-radius-m: 1rem; /* 16px */
+            --border-radius-s: 0.75rem; /* 12px */
+            --border-radius-full: 99rem;
+        }
+
+        /*
+        ========================================
+        GLOBAL STYLES & RESETS
+        ========================================
+        */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
-            font-family: "Roboto", sans-serif;
+            font-family: var(--md-sys-font-family-body);
+            background-color: var(--md-sys-color-surface);
+            color: var(--md-sys-color-on-surface);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            color: var(--md-sys-color-primary);
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /*
+        ========================================
+        TYPOGRAPHY SCALE
+        ========================================
+        */
+        h1, h2, h3 {
+            margin-top: var(--spacing-l);
+            margin-bottom: var(--spacing-m);
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--md-sys-color-on-surface);
+        }
+
+        h1 { /* Material: Display Small */
+            font-size: 2.25rem;
+        }
+
+        h2 { /* Material: Headline Medium */
+            font-size: 1.75rem;
         }
         
-        ol {
-            margin: 0;
-            padding: 0
-        }
-
-        table td,
-        table th {
-            padding: 0
-        }
-
-        .c4 {
-            background-color: #b7b7b7;
-            color: #ffffff;
-            font-weight: 700;
-            text-decoration: none;
-            vertical-align: baseline;
-            font-size: 11pt;
-            font-style: normal
-        }
-
-        .c0 {
-            background-color: #000000;
-            color: #ffffff;
-            font-weight: 700;
-            text-decoration: none;
-            vertical-align: baseline;
-            font-size: 11pt;
-            font-style: normal
-        }
-
-        .c7 {
-            padding-top: 18pt;
-            padding-bottom: 6pt;
-            line-height: 1.15;
-            page-break-after: avoid;
-            orphans: 2;
-            widows: 2;
-            text-align: left
-        }
-
-        .c9 {
-            color: #000000;
-            font-weight: 400;
-            text-decoration: none;
-            vertical-align: baseline;
-            font-size: 11pt;
-            font-style: normal
-        }
-
-        .c1 {
-            color: #000000;
-            font-weight: 700;
-            text-decoration: none;
-            vertical-align: baseline;
-            font-size: 11pt;
-            font-style: normal
-        }
-
-        .c12 {
-            background-color: #ff0000;
-            color: #ffffff;
-            text-decoration: none;
-            vertical-align: baseline;
-            font-size: 11pt;
-            font-style: normal
-        }
-
-        .c2 {
-            padding-top: 0pt;
-            padding-bottom: 0pt;
-            line-height: 1.15;
-            orphans: 2;
-            widows: 2;
-            text-align: left;
-            height: 11pt
-        }
-
-        .c8 {
-            color: #000000;
-            text-decoration: none;
-            vertical-align: baseline;
-            font-size: 16pt;
-            font-style: normal
-        }
-
-        .c3 {
-            padding-top: 0pt;
-            padding-bottom: 0pt;
-            line-height: 1.15;
-            orphans: 2;
-            widows: 2;
-            text-align: left
-        }
-
-        .c10 {
-            background-color: #ffffff;
-            max-width: 451.4pt;
-            padding: 72pt 72pt 72pt 72pt
-        }
-
-        .c6 {
-            background-color: #000000;
-            color: #ffffff
-        }
-
-        .c11 {
-            background-color: #cccccc
-        }
-
-        .c5 {
-            font-weight: 700
-        }
-
-        .title {
-            padding-top: 0pt;
-            color: #000000;
-            font-size: 26pt;
-            padding-bottom: 3pt;
-            line-height: 1.15;
-            page-break-after: avoid;
-            orphans: 2;
-            widows: 2;
-            text-align: left
-        }
-
-        .subtitle {
-            padding-top: 0pt;
-            color: #666666;
-            font-size: 15pt;
-            padding-bottom: 16pt;
-            line-height: 1.15;
-            page-break-after: avoid;
-            orphans: 2;
-            widows: 2;
-            text-align: left
-        }
-
-        li {
-            color: #000000;
-            font-size: 11pt;
-            font-family: "Arial"
-        }
-
         p {
+            margin: 0 0 var(--spacing-m) 0;
+        }
+
+        /*
+        ========================================
+        LAYOUT & MAIN COMPONENTS
+        ========================================
+        */
+        .top-app-bar {
+            background-color: var(--md-sys-color-surface-container-low);
+            padding: var(--spacing-l) var(--spacing-xl);
+            border-bottom: 1px solid var(--md-sys-color-outline-variant);
+        }
+
+        .top-app-bar a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .top-app-bar__title {
+            font-family: var(--md-sys-font-family-brand);
+            font-style: italic;
+            font-size: 1.75rem;
             margin: 0;
-            color: #000000;
-            font-size: 11pt;
-            font-family: "Arial"
+            color: var(--md-sys-color-on-surface);
         }
-
-        h1 {
-            padding-top: 20pt;
-            color: #000000;
-            font-size: 20pt;
-            padding-bottom: 6pt;
-            line-height: 1.15;
-            page-break-after: avoid;
-            orphans: 2;
-            widows: 2;
-            text-align: left
-        }
-
-        h2 {
-            padding-top: 18pt;
-            color: #000000;
-            font-size: 16pt;
-            padding-bottom: 6pt;
-            line-height: 1.15;
-            page-break-after: avoid;
-            orphans: 2;
-            widows: 2;
-            text-align: left
-        }
-
-        h3 {
-            padding-top: 16pt;
-            color: #434343;
-            font-size: 14pt;
-            padding-bottom: 4pt;
-            line-height: 1.15;
-            page-break-after: avoid;
-            orphans: 2;
-            widows: 2;
-            text-align: left
-        }
-
-        h4 {
-            padding-top: 14pt;
-            color: #666666;
-            font-size: 12pt;
-            padding-bottom: 4pt;
-            line-height: 1.15;
-            page-break-after: avoid;
-            orphans: 2;
-            widows: 2;
-            text-align: left
-        }
-
-        h5 {
-            padding-top: 12pt;
-            color: #666666;
-            font-size: 11pt;
-            padding-bottom: 4pt;
-            line-height: 1.15;
-            page-break-after: avoid;
-            orphans: 2;
-            widows: 2;
-            text-align: left
-        }
-
-        h6 {
-            padding-top: 12pt;
-            color: #666666;
-            font-size: 11pt;
-            padding-bottom: 4pt;
-            line-height: 1.15;
-            page-break-after: avoid;
+        
+        .top-app-bar__subtitle {
+            font-family: var(--md-sys-font-family-brand);
             font-style: italic;
-            orphans: 2;
-            widows: 2;
-            text-align: left
+            margin: 0;
+            color: var(--md-sys-color-on-surface-variant);
         }
-        nav {
-            background-color: #000000;
-            font-family: "Playfair Display", serif;
-            font-style: italic;
-            padding: 3rem;
-            padding-bottom: 5rem;
-            padding-inline-start: 6rem;
-            color: #ffffff;
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: var(--spacing-xl);
         }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xxl);
+        }
+
+        .page-header p {
+            font-size: 1.125rem;
+            color: var(--md-sys-color-on-surface-variant);
+            max-width: 70ch;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         footer {
-            background-color: #000000;
-            color: #ffffff;
-            padding: 5rem;
+            text-align: center;
+            padding: var(--spacing-xl);
+            margin-top: var(--spacing-xxl);
+            background-color: var(--md-sys-color-surface-container-low);
+            color: var(--md-sys-color-on-surface-variant);
+            border-top: 1px solid var(--md-sys-color-outline-variant);
         }
-        nav h1 {
-            font-family: "Playfair Display", serif;
-            margin: 0;
-            color: #ffffff;
+
+        /*
+        ========================================
+        TIMELINE COMPONENT
+        ========================================
+        */
+        .timeline {
+            position: relative;
+            padding-left: var(--spacing-xl);
         }
-        nav a {
-            color: currentColor;
-            text-decoration: none;
+
+        /* The vertical line */
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: var(--spacing-m);
+            bottom: var(--spacing-m);
+            width: 4px;
+            background: var(--md-sys-color-outline-variant);
+            border-radius: 2px;
         }
-        .card {
-            margin: 2rem 0;
-            padding: 1.6rem;
-            border-radius: 1rem;
-            background-color: #edebf4;
+
+        .timeline-item {
+            position: relative;
+            padding-left: var(--spacing-xl);
+        }
+
+        /* The dot on the line */
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -18px;
+            top: 1.7rem;
+            width: 50px;
+            height: 4px;
+            background-color: var(--md-sys-color-outline-variant);
+        }
+
+        .timeline-card {
+            background-color: var(--md-sys-color-surface-container-low);
+            border: 1px solid var(--md-sys-color-outline-variant);
+            border-radius: var(--border-radius-m);
+            padding: var(--spacing-l);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .timeline-card h2 {
+            margin-top: 0;
+        }
+
+        .timeline-card img {
+            border-radius: var(--border-radius-s);
+            margin-top: var(--spacing-m);
+            border: 1px solid var(--md-sys-color-outline-variant);
+        }
+
+        .timeline-spacer {
+            padding-left: var(--spacing-xl);
+            margin: var(--spacing-xl) 0;
+            text-align: center;
+        }
+
+        .timeline-spacer .chip {
+            margin-bottom: 0;
+        }
+        
+        /*
+        ========================================
+        CHIP COMPONENT
+        ========================================
+        */
+        .chip {
+            display: inline-block;
+            padding: var(--spacing-xs) var(--spacing-m);
+            border-radius: var(--border-radius-s);
+            font-size: 0.875rem;
+            font-weight: 500;
+            line-height: 1.5;
+            margin-bottom: var(--spacing-m);
+        }
+
+        .chip--primary {
+            background-color: var(--md-sys-color-primary-container);
+            color: var(--md-sys-color-on-primary-container);
+        }
+
+        .chip--error {
+            background-color: var(--md-sys-color-error);
+            color: var(--md-sys-color-on-error);
+        }
+
+        .chip--spacer {
+            background-color: var(--md-sys-color-secondary-container);
+            color: var(--md-sys-color-on-secondary-container);
+        }
+        
+        /*
+        ========================================
+        AUTHOR CARD COMPONENT
+        ========================================
+        */
+        .author-card {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             align-items: center;
-            justify-content: start;
-            gap: 2rem;
+            text-align: center;
+            gap: var(--spacing-m);
+            margin-top: var(--spacing-xxl);
+            padding: var(--spacing-l);
+            background-color: var(--md-sys-color-tertiary-container);
+            border-radius: var(--border-radius-m);
         }
-        .card img {
-            height: 5rem;
-            border-radius: 99rem;
+
+        .author-card__avatar {
+            width: 96px;
+            height: 96px;
+            border-radius: var(--border-radius-full);
+            object-fit: cover;
         }
-        a {
-            text-decoration: none;
-            color: currentColor;
-            font-weight: bold;
+        
+        .author-card__name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 0;
+            color: var(--md-sys-color-on-tertiary-container);
+        }
+
+        .author-card__bio {
+            margin: 0;
+            font-size: 1rem;
+            color: var(--md-sys-color-on-tertiary-container);
+            max-width: 60ch;
+        }
+        
+        /* Responsive adjustments */
+        @media (min-width: 600px) {
+            .author-card {
+                flex-direction: row;
+                text-align: left;
+                gap: var(--spacing-l);
+            }
         }
     </style>
 </head>
 
 <body>
-    <nav>
+    <header class="top-app-bar">
         <a href="/">
-        <h1>oli.cx</h1>
-        <span>Creating unique digital experiences</span>
-    </a>
-    </nav>
-    <div class="c10 doc-content">
-
-    <header>
-        <h1>An Unresolved Google Play Support Case: A Developer's Timeline</h1>
-        <p>
-            In July 2024, my Google Play Developer account was terminated due to an incorrect association with another account. After a difficult, year-long appeal process, my account was successfully reinstated in March 2025. Unfortunately, a cascade of automated system errors on the day of reinstatement left all of my apps in a "Suspended" state, where they have been stuck for over five months, rendering them completely un-updateable. This document provides a clear, evidence-backed timeline of these events in an effort to find a resolution.
-        </p>
+            <h1 class="top-app-bar__title">oli.cx</h1>
+            <span class="top-app-bar__subtitle">Creating unique digital experiences</span>
+        </a>
     </header>
-    <h2 class="c7" id="h.oehfi4db50nt"><span class="c8 c5">Event 1: The Reinstatement</span></h2>
-    <p class="c3"><span class="c6 c5">&#8199;Mar 7, 2025, 2:41&#8239;AM&#8199;</span><span class="c5">&nbsp;UTC +
-            2</span></p>
-    <p class="c3"><span class="c1">&#8199;My Google Play Developer account is officially reinstated after a successful,
-            year-long appeal.&#8199;</span></p>
-    <p class="c2"><span class="c1"></span></p>
-    <p class="c3"><span
-            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 317.33px;"><img
-                alt="" src="images/image5.png"
-                style="width: 601.70px; height: 317.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
-                title=""></span></p>
-    <p class="c2"><span class="c1 c11"></span></p>
-    <p class="c3"><span class="c4">&#8199;&lt; 5 hours, 28 minutes passed &gt;&#8199;</span></p>
-    <h2 class="c7" id="h.cbmm8zqvasrn"><span class="c5">Event 2: The Automated Failure</span></h2>
-    <p class="c2"><span class="c0"></span></p>
-    <p class="c3"><span class="c6 c5">&#8199;Mar 7, 2025, 8:09&#8239;AM&#8199;</span><span class="c5">&nbsp;UTC +
-            2</span><span class="c5 c6"><br></span><span class="c1">&#8199;Less than 6 hours later, I receive the first
-            of three automated emails. My reinstated account is now &quot;Restricted&quot; due to an &quot;Identity
-            verification&quot; issue. &#8199;</span></p>
-    <p class="c3"><span
-            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 410.67px;"><img
-                alt="" src="images/image1.png"
-                style="width: 601.70px; height: 410.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
-                title=""></span></p>
-    <p class="c3"><span class="c4">&#8199;&lt; 6 minutes passed &gt;&#8199;</span></p>
-    <p class="c3"><span class="c6 c5">&#8199;Mar 7, 2025, 8:15&#8239;AM&#8199;</span><span class="c5">&nbsp;UTC +
-            2</span></p>
-    <p class="c3"><span
-            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 410.67px;"><img
-                alt="" src="images/image3.png"
-                style="width: 601.70px; height: 410.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
-                title=""></span></p>
-    <p class="c2"><span class="c0"></span></p>
-    <p class="c2"><span class="c0"></span></p>
-    <p class="c3"><span class="c4">&#8199;&lt; 2 hours, 31 minutes passed&gt;&#8199;</span></p>
-    <p class="c3"><span class="c6 c5">&#8199;Mar 7, 2025, 10:46:44&#8239;AM&#8199;</span><span class="c1">&nbsp;UTC +
-            2</span></p>
-    <p class="c3"><span
-            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 410.67px;"><img
-                alt="" src="images/image2.png"
-                style="width: 601.70px; height: 410.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
-                title=""></span></p>
-    <p class="c2"><span class="c0"></span></p>
-    <p class="c3"><span class="c4">&#8199;&lt; 46 seconds passed &gt;&#8199;</span></p>
-    <h2 class="c7" id="h.hkt2fuks93dn"><span class="c8 c5">Event 3: The Immediate Fix</span></h2>
-    <p class="c2"><span class="c5 c12"></span></p>
-    <p class="c3"><span class="c6 c5">&#8199;Mar 7, 2025, 10:47:30&#8239;AM&#8199;</span><span class="c5">&nbsp;UTC +
-            2</span></p>
-    <p class="c3"><span class="c1">&#8199;The identity issue is suddenly resolved. I receive an email confirming:
-            &quot;Your identity has been verified.&quot; This happened less than 3 hours after the problem started.
-            &#8199;</span></p>
-    <p class="c3"><span
-            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 342.67px;"><img
-                alt="" src="images/image4.png"
-                style="width: 601.70px; height: 342.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
-                title=""></span></p>
-    <p class="c3"><span class="c4">&#8199;&lt; 5 months, 8 days, 12 hours, 12 minutes passed &gt;&#8199;</span></p>
-    <h2 class="c7" id="h.o0fo2lq812ln"><span class="c5 c8">Event 4: The Lingering Consequence (5+ Months Later)</span>
-    </h2>
-    <p class="c3"><span class="c1">My developer account is verified and in good standing. However, all of my apps remain
-            incorrectly &quot;Suspended&quot; - a status triggered by the temporary ID flag that was fixed on the same
-            day. The Play Console interface remains completely locked.&#8199;</span></p>
-    <p class="c2"><span class="c1"></span></p>
-    <p class="c3"><span
-            style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 601.70px; height: 326.67px;"><img
-                alt="" src="images/image6.png"
-                style="width: 601.70px; height: 326.67px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
-                title=""></span></p>
-    <p class="c3">
-        <br><br><br><br><br>
-        <strong>
-            As of August 2025, my developer account is fully verified and in good standing, yet my apps remain inaccessible due to the administrative error that occurred on March 7th. The standard support channels have acknowledged the issue but have been unable to resolve it, as the case appears to require a manual correction that front-line support cannot perform. My objective is simple: to have the incorrect "Suspended" status lifted from my apps so that I may resume development, update them to meet all current policies, and make them available to users once more.
 
-        </strong>
-        <br><br><br>
-        <div class="card">
-            <img src="https://premedis.com/en/assets/lectors/oliver.jpg" alt="" class="profilepic">
-            <div>
-            <span style="font-size: 1.2rem;"><b>Oliver Petrovič</b></span><br>
-            <span>Android developer, creator of Flag Creator, founder of <a href="https://hereditic.com" target="_blank">hereditic</a> and <a href="https://premedis.com" target="_blank">Premedis</a>. Currently studying Molecular Biology and Biochemistry at <a href="https://cuni.cz/UKEN-1.html">Charles University</a> in Prague</span>
-            </div>
-        </div>    </p>
-</div>
-<footer>
-    &copy; 2019-2025, oli.cx
-</footer>
+    <main>
+        <div class="container">
+            <header class="page-header">
+                <h1>An Unresolved Google Play Support Case: A Developer's Timeline</h1>
+                <span class="chip chip--spacer">Posted on Aug 13th, 2025 &nbsp;·&nbsp; Last Update: Aug 14th, 2025</span>
+                <p>
+In July 2024, my Google Play Developer account was terminated due to its association with a previously terminated account. After a difficult, year-long process of resolving the issues, my developer status was fully reinstated in March 2025. 
+Unfortunately, a cascade of automated system errors on the day of reinstatement left all of my apps in a "Suspended" state, where they have been stuck for over five months, rendering them completely un-updateable. This document provides a clear, evidence-backed timeline of these events in an effort to find a resolution.
+                </p>
+            </header>
+
+            <article class="timeline">
+                <section class="timeline-item">
+                    <div class="timeline-card">
+                        <h2>Event 1: The Reinstatement</h2>
+                        <span class="chip chip--primary">Mar 7, 2025, 2:41 AM UTC+2</span>
+                        <p>My Google Play Developer account is officially reinstated after a successful, year-long appeal.</p>
+                        <img src="images/image5.png" alt="Email confirming Google Play Developer account reinstatement.">
+                    </div>
+                </section>
+                <div class="timeline-spacer">
+                    <span class="chip chip--spacer"> 5 hours, 28 minutes passed</span>
+                </div>
+
+                <section class="timeline-item">
+                    <div class="timeline-card">
+                        <h2>Event 2: The Automated Failure</h2>
+                        <span class="chip chip--primary">Mar 7, 2025, 8:09 AM UTC+2</span>
+                        <p>Less than 6 hours later, I receive the first of three automated emails. My reinstated account is now "Restricted" due to an "Identity verification" issue.</p>
+                        <img src="images/image1.png" alt="First email notification of a restricted account due to identity verification.">
+                        <div class="timeline-spacer">
+                            <span class="chip chip--spacer">6 minutes passed</span>
+                        </div>
+                        <img src="images/image3.png" alt="Second email notification of account restriction.">
+                        <div class="timeline-spacer">
+                            <span class="chip chip--spacer">2 hours, 31 minutes passed</span>
+                        </div>
+                        <img src="images/image2.png" alt="Third email notification of account restriction.">
+                    </div>
+                </section>
+                <div class="timeline-spacer">
+                    <span class="chip chip--spacer">46 seconds passed</span>
+                </div>
+                
+                <section class="timeline-item" id="event3">
+                    <div class="timeline-card">
+                        <h2>Event 3: The Immediate Fix</h2>
+                        <span class="chip chip--primary">Mar 7, 2025, 10:47 AM UTC+2</span>
+                        <p>The identity issue is suddenly resolved. I receive an email confirming: "Your identity has been verified." This happened less than 3 hours after the problem started.</p>
+                        <img src="images/image4.png" alt="Email confirming identity has been successfully verified.">
+                    </div>
+                </section>
+                <div class="timeline-spacer">
+                    <span id="time-elapsed-counter" class="chip chip--spacer">5 months, 8 days, 12 hours passed</span>
+                </div>
+
+                <section class="timeline-item">
+                    <div class="timeline-card">
+                        <h2>Event 4: The Lingering Consequence (5+ Months Later)</h2>
+                        <p>My developer account is verified and in good standing. However, all of my apps remain incorrectly "Suspended" - a status triggered by the temporary ID flag that was fixed on the same day. The Play Console interface remains completely locked.</p>
+                        <img src="images/image6.png" alt="Screenshot of the Google Play Console showing all apps as 'Suspended'.">
+                    </div>
+                </section>
+            </article>
+
+            <section class="summary">
+                <p><strong>As of August 2025, my developer account is accessible and my identity has been <a href="#event3">confirmed</a> by Google's own verification system. Yet my apps remain inaccessible due to what appears to be a system error that occurred on March 7th. The standard support channels have acknowledged the issue but have been unable to resolve it, as the case appears to require a manual correction that front-line support cannot perform. My objective is simple: to have the incorrect "Suspended" status lifted from my apps so that I may resume development, update them to meet all current policies, and make them available to users once more.</strong></p>
+            </section>
+            
+            <figure class="author-card">
+                <img src="https://premedis.com/en/assets/lectors/oliver.jpg" alt="Photo of Oliver Petrovič" class="author-card__avatar">
+                <figcaption>
+                    <p class="author-card__name">Oliver Petrovič</p>
+                    <p class="author-card__bio">
+                        Android developer, creator of Flag Creator, founder of <a href="https://hereditic.com" target="_blank" rel="noopener noreferrer">hereditic</a> and <a href="https://premedis.com" target="_blank" rel="noopener noreferrer">Premedis</a>. Currently studying Molecular Biology and Biochemistry at <a href="https://cuni.cz/UKEN-1.html" target="_blank" rel="noopener noreferrer">Charles University</a> in Prague.
+                    </p>
+                </figcaption>
+            </figure>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2019-2025, oli.cx
+    </footer>
+    <script>
+        // This script will run after the HTML document has been fully loaded.
+        document.addEventListener('DOMContentLoaded', () => {
+            // Find the specific element by its ID where the time will be displayed.
+            const timeElapsedElement = document.getElementById('time-elapsed-counter');
+            
+            // If the element doesn't exist on the page, stop the script.
+            if (!timeElapsedElement) {
+                console.error('Element with ID "time-elapsed-counter" not found.');
+                return;
+            }
+
+            // Define the fixed date of the event. Using the ISO 8601 format is the most reliable way.
+            // '2025-03-07T10:47:00+02:00' represents March 7, 2025, at 10:47 AM in a timezone 2 hours ahead of UTC.
+            const eventDate = new Date('2025-03-07T10:47:00+02:00');
+
+            // This function calculates the elapsed time and updates the HTML.
+            function calculateAndRender() {
+                const now = new Date();
+                
+                // If the current date is before the event date, show a message and stop.
+                if (now < eventDate) {
+                    timeElapsedElement.textContent = 'Event has not yet occurred.';
+                    return;
+                }
+
+                // Calculate the difference in each time unit by comparing the date components.
+                // This is more accurate than converting everything to milliseconds.
+                let years = now.getFullYear() - eventDate.getFullYear();
+                let months = now.getMonth() - eventDate.getMonth();
+                let days = now.getDate() - eventDate.getDate();
+                let hours = now.getHours() - eventDate.getHours();
+                let minutes = now.getMinutes() - eventDate.getMinutes();
+                let seconds = now.getSeconds() - eventDate.getSeconds();
+
+                // Adjust for negative values by "borrowing" from the next higher time unit.
+                if (seconds < 0) {
+                    seconds += 60;
+                    minutes--;
+                }
+                if (minutes < 0) {
+                    minutes += 60;
+                    hours--;
+                }
+                if (hours < 0) {
+                    hours += 24;
+                    days--;
+                }
+                if (days < 0) {
+                    // Get the number of days in the previous month to calculate the correct day difference.
+                    const daysInLastMonth = new Date(now.getFullYear(), now.getMonth(), 0).getDate();
+                    days += daysInLastMonth;
+                    months--;
+                }
+                if (months < 0) {
+                    months += 12;
+                    years--;
+                }
+                
+                // Build the final string for display, only including non-zero parts for a cleaner look.
+                const parts = [];
+                if (years > 0) parts.push(`${years} year${years !== 1 ? 's' : ''}`);
+                if (months > 0) parts.push(`${months} month${months !== 1 ? 's' : ''}`);
+                if (days > 0) parts.push(`${days} day${days !== 1 ? 's' : ''}`);
+                if (hours > 0) parts.push(`${hours} hour${hours !== 1 ? 's' : ''}`);
+                if (minutes > 0) parts.push(`${minutes} minute${minutes !== 1 ? 's' : ''}`);
+                // Always show seconds for a live "ticking" effect.
+                parts.push(`${seconds} second${seconds !== 1 ? 's' : ''}`);
+
+                // Update the text content of the element.
+                timeElapsedElement.textContent = `${parts.join(', ')} passed`;
+            }
+
+            // Use setInterval to run the calculation function every 1000 milliseconds (1 second).
+            setInterval(calculateAndRender, 1000);
+
+            // Call the function once immediately on page load so we don't have to wait for the first second to pass.
+            calculateAndRender();
+        });
+    </script>
 </body>
 
 </html>
